@@ -10,7 +10,6 @@ export default function Page() {
       <Hero />
       <Gallery />
       <Trustbar />
-      <div className="h-screen w-full"></div>
     </div>
   );
 }
