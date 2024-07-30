@@ -1,11 +1,38 @@
+"use client";
+
 import Button from "@/molecules/Button";
 import Logo from "@/molecules/Logo";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const Header = () => {
+  const [isTop, setIsTop] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const isAtTop = scrollTop !== 0;
+
+      setIsTop(isAtTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="border-b border-b-white/20 bg-black px-4">
-      <div className="max-w-8xl mx-auto flex items-center justify-between">
+    <header
+      className={twMerge(
+        "animate fixed top-0 z-50 w-full border-b border-b-white/20 px-4 lg:px-24",
+        isTop ? "py-0 backdrop-blur-sm" : "py-2",
+      )}
+    >
+      <div className="max-width flex items-center justify-between">
         <Logo />
         <nav className="flex items-center">
           <Link href="/" className="animate nav-link">

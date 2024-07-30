@@ -2,24 +2,24 @@
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
+import Grid from "../Grid";
 
 export const Gallery = () => {
   const { scrollYProgress } = useScroll();
 
   const scaleY = useSpring(scrollYProgress, {
-    stiffness: 70,
+    stiffness: 50,
     damping: 20,
   });
 
-  // Transform the scroll progress to a translateX value
-  const translateX = useTransform(scaleY, [0, 1], [-210, -400]);
+  const translateX = useTransform(scaleY, [0, 1], [-230, -400]);
 
   return (
-    <div className="-mt-48 w-full overflow-hidden pb-10 lg:pb-24">
+    <div className="relative -mt-10 w-full overflow-hidden pb-10 lg:pb-24">
       <motion.div
-        id="gallery"
-        className="flex gap-20"
         style={{ x: translateX }}
+        id="gallery"
+        className="relative z-10 flex gap-20"
       >
         <div className="flex w-[500px] shrink-0 flex-col items-center justify-between gap-20">
           <Image
@@ -74,6 +74,8 @@ export const Gallery = () => {
           />
         </div>
       </motion.div>
+      <Grid />
+      <div className="absolute bottom-10 left-0 z-10 h-[300px] w-[300px] -translate-x-1/2 transform rounded-full bg-gradient-radial from-amber-500/50 via-amber-500/30 to-transparent opacity-20 blur-2xl"></div>
     </div>
   );
 };

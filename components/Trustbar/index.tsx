@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Trustbar = () => {
   return (
-    <div>
+    <div className="padding">
       <div className="max-width flex flex-col items-center">
         <p className="font-outfit font-semibold text-black">
           Trusted by 20+ businesses
