@@ -23,7 +23,7 @@ const config: Config = {
         montserrat: ["var(--font-montserrat)"],
       },
       maxWidth: {
-        "8xl": "1440px",
+        "8xl": "1280px",
       },
     },
   },

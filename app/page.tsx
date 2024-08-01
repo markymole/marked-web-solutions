@@ -2,8 +2,11 @@ import { CardDeck } from "@/components/CardDeck";
 import { Gallery } from "@/components/Gallery";
 import Header from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import Switchback from "@/components/Switchback";
+import Switcher from "@/components/Switcher";
 import Trustbar from "@/components/Trustbar";
 import { CardsData, PricingData } from "@/data/Cards";
+import { switcherContent } from "@/data/Switcher";
 
 export default function Page() {
   return (
@@ -11,6 +14,8 @@ export default function Page() {
       <Header />
       <Hero />
       <Gallery />
+
+      <Switcher slides={switcherContent} />
 
       <CardDeck
         type="Basic"

@@ -18,7 +18,7 @@ export const Hero = ({ title, description }: HeroProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % highlight.length);
-    }, 1000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [highlight.length]);
