@@ -40,7 +40,7 @@
       calc(var(--s) / var(--n));
   /* you probably don't need to set any size in your case */
   width: calc(round(down, 100%, var(--s)) + var(--t));
-  height: calc(24 * var(--s) + var(--t)); /*  control the number of boxes*/
+  height: calc(10 * var(--s) + var(--t)); /*  control the number of boxes*/
 }
 @supports not (opacity: round(1, 1)) {
   .grid-lines {

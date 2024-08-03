@@ -4,6 +4,8 @@ import { twMerge } from "tailwind-merge";
 import BasicCard from "@/molecules/Cards/Basic";
 import type { CardProps, PricingCardProps } from "./CardDeck.types";
 import PricingCard from "@/molecules/Cards/Pricing";
+import Container from "@/molecules/Container";
+import Wrapper from "@/molecules/Wrapper";
 
 interface CardDeckProps {
   type: "Basic" | "Pricing";
@@ -23,8 +25,8 @@ export const CardDeck = ({
   pricingCards,
 }: CardDeckProps) => {
   return (
-    <div className="padding relative overflow-hidden">
-      <div className="max-width relative z-10">
+    <Wrapper className="overflow-hidden">
+      <Container>
         <div className="flex flex-col gap-4">
           {label && (
             <p className="font-karla font-medium uppercase tracking-widest text-amber-500">
@@ -73,7 +75,7 @@ export const CardDeck = ({
               />
             ))}
         </div>
-      </div>
+      </Container>
       <Grid />
       <div
         className={twMerge(
@@ -81,6 +83,6 @@ export const CardDeck = ({
           type === "Basic" ? "-right-52 bottom-24" : "-left-52 top-0",
         )}
       ></div>
-    </div>
+    </Wrapper>
   );
 };

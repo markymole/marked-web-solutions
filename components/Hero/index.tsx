@@ -4,6 +4,10 @@ import Button from "@/molecules/Button";
 import React, { useEffect, useState } from "react";
 import Grid from "../Grid";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import H from "@/molecules/Heading";
+import Paragraph from "@/molecules/Paragraph";
+import Wrapper from "@/molecules/Wrapper";
+import Container from "@/molecules/Container";
 
 interface HeroProps {
   title?: string;
@@ -24,26 +28,22 @@ export const Hero = ({ title, description }: HeroProps) => {
   }, [highlight.length]);
 
   return (
-    <div className="padding relative overflow-hidden lg:pt-36">
-      <div className="relative z-10 mx-auto flex max-w-8xl flex-col items-center gap-6">
+    <Wrapper className="overflow-hidden lg:pt-36">
+      <Container className="flex flex-col items-center gap-6">
         <div className="flex max-w-4xl">
-          {/* <h1 className="text-center font-outfit text-7xl font-semibold text-white">
-            Building <span className="text-gradient">remarkable</span> websites
-            for your business<span className="text-gradient">.</span>
-          </h1> */}
-          <h1 className="text-center font-outfit text-7xl font-semibold text-white">
+          <H as="h1" className="text-center text-7xl font-semibold text-white">
             Building remarkable websites for your{" "}
             <motion.span className="text-gradient">
               {highlight[index]}
             </motion.span>
             <span className="text-gradient">.</span>
-          </h1>
+          </H>
         </div>
-        <p className="max-w-3xl text-center font-karla text-lg text-gray-300">
+        <Paragraph className="max-w-3xl text-center text-lg text-gray-300">
           We specialize in crafting visually stunning and highly functional
           websites that elevate your brand. Experience the difference with our
           expert web solutions.
-        </p>
+        </Paragraph>
 
         <div className="mt-2 flex flex-col items-center gap-8">
           <Button hierarchy={"primary"} size="base">
@@ -62,9 +62,9 @@ export const Hero = ({ title, description }: HeroProps) => {
             </svg>
           </Button>
         </div>
-      </div>
+      </Container>
       <Grid />
       <div className="absolute -top-40 right-0 z-10 h-[480px] w-[700px] rounded-full bg-gradient-radial from-amber-500/40 via-amber-500/20 to-transparent opacity-20 blur-2xl"></div>
-    </div>
+    </Wrapper>
   );
 };

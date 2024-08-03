@@ -5,6 +5,11 @@ import Grid from "../Grid";
 import Button from "@/molecules/Button";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
+import H from "@/molecules/Heading";
+import Paragraph from "@/molecules/Paragraph";
+import Label from "@/molecules/Label";
+import Container from "@/molecules/Container";
+import Wrapper from "@/molecules/Wrapper";
 
 interface SwitcherProps {
   slides: SlideProps[];
@@ -24,8 +29,8 @@ const Switcher = ({ slides }: SwitcherProps) => {
   const [active, setActive] = useState<number>(0);
 
   return (
-    <motion.div className="padding relative">
-      <div className="max-width relative z-10 grid grid-cols-2 gap-14">
+    <Wrapper className="overflow-hidden">
+      <Container className="relative z-10 grid grid-cols-2 gap-14">
         <AnimatePresence mode="wait" initial={true}>
           {slides &&
             slides.length > 0 &&
@@ -41,16 +46,14 @@ const Switcher = ({ slides }: SwitcherProps) => {
                     className={twMerge("flex shrink flex-col gap-4")}
                   >
                     {slide.switcherTitle && (
-                      <p className="font-karla font-medium uppercase tracking-widest text-amber-500">
-                        {slide.switcherTitle}
-                      </p>
+                      <Label>{slide.switcherTitle}</Label>
                     )}
-                    <h2 className="max-w-lg font-outfit text-5xl font-medium text-white">
+                    <H as="h2" className="text-5xl font-medium text-white">
                       {slide.heading}
-                    </h2>
-                    <p className="font-karla text-lg text-gray-300">
+                    </H>
+                    <Paragraph className="text-lg text-gray-300">
                       {slide.description}
-                    </p>
+                    </Paragraph>
                     <Button
                       hierarchy={"primary"}
                       className="mt-4 w-fit"
@@ -70,28 +73,30 @@ const Switcher = ({ slides }: SwitcherProps) => {
               <button
                 onClick={() => setActive(index)}
                 className={twMerge(
-                  "flex w-auto items-center gap-6 rounded-xl px-8 py-4",
-                  index === active &&
-                    "border border-gray-500/30 bg-gradient-to-l from-gray-500/30 to-transparent",
+                  "animate flex w-auto items-center gap-6 rounded-xl border px-8 py-4",
+                  index === active
+                    ? "border-gray-500/30 bg-gradient-to-l from-gray-500/30 to-transparent"
+                    : "border-transparent",
                 )}
                 key={Math.random()}
               >
                 <div className="text-amber-500">{slide.switcherIcon}</div>
                 <div className="text-start">
-                  <h6 className="font-outfit text-lg font-semibold text-white">
+                  <H as="h6" className="text-lg font-semibold text-white">
                     {slide.switcherTitle}
-                  </h6>
-                  <p className="font-karla text-gray-300">
+                  </H>
+
+                  <Paragraph className="text-gray-300">
                     {slide.switcherDescription}
-                  </p>
+                  </Paragraph>
                 </div>
               </button>
             ))}
           </div>
         )}
-      </div>
+      </Container>
       <Grid />
-    </motion.div>
+    </Wrapper>
   );
 };
 
