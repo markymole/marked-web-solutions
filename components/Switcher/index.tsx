@@ -38,11 +38,11 @@ const Switcher = ({ slides }: SwitcherProps) => {
               return (
                 index === active && (
                   <motion.div
-                    key={Math.random()}
+                    key={index}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                     className={twMerge("flex shrink flex-col gap-4")}
                   >
                     {slide.switcherTitle && (

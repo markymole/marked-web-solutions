@@ -1,11 +1,13 @@
+import Accordion from "@/components/Accordion";
 import { CardDeck } from "@/components/CardDeck";
+import ConversionPanel from "@/components/ConversionPanel";
 import { Gallery } from "@/components/Gallery";
 import Header from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import Switchback from "@/components/Switchback";
 import Switcher from "@/components/Switcher";
-import Trustbar from "@/components/Trustbar";
 import { CardsData, PricingData } from "@/lib/data/Cards";
+import { faqItems } from "@/lib/data/FAQ";
 import { switcherContent } from "@/lib/data/Switcher";
 
 export default function Page() {
@@ -47,6 +49,19 @@ export default function Page() {
         title={"Affordable Packages for every budget"}
         description="Choose a plan that fits your needs, with straightforward pricing and no surprises"
         pricingCards={PricingData}
+      />
+      <Accordion
+        heading="Frequently asked questions"
+        description="Everything you need to know about the service and billing"
+        items={faqItems}
+      />
+      <ConversionPanel
+        heading={"Get Started with Marked"}
+        description={
+          "Transform your ideas into reality with our expert web development services. Join countless satisfied clients and let us help you build a remarkable online presence. Whether you need a new website, a redesign, or ongoing support, we're here to help."
+        }
+        link={"/contact"}
+        linkText={"Learn more"}
       />
     </div>
   );

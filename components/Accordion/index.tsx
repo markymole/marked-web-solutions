@@ -1,6 +1,10 @@
-import Button from "@/molecules/Button";
+"use client";
+
 import Container from "@/molecules/Container";
-import React from "react";
+import Wrapper from "@/molecules/Wrapper";
+import React, { useState } from "react";
+import Heading from "../Heading";
+import AccordionItem from "./AccordionItem";
 
 interface AccordionProps {
   label?: string;
@@ -8,6 +12,12 @@ interface AccordionProps {
   description: string; // can use richtext
   link?: string;
   linkText?: string;
+  items: AccordionItemProps[];
+}
+
+interface AccordionItemProps {
+  title: string;
+  content: string;
 }
 
 const Accordion = ({
@@ -16,26 +26,38 @@ const Accordion = ({
   description,
   link,
   linkText,
+  items,
 }: AccordionProps) => {
+  const [active, setActive] = useState<number | null>(0);
+
   return (
-    <Container className="flex flex-col gap-4">
-      {label && (
-        <p className="font-karla font-medium uppercase tracking-widest text-amber-500">
-          {label}
-        </p>
-      )}
-      <h2 className="max-w-lg font-outfit text-5xl font-medium text-white">
-        {heading}
-      </h2>
-      {description && (
-        <p className="font-karla text-lg text-gray-300">{description}</p>
-      )}
-      {link && linkText && (
-        <Button hierarchy={"primary"} className="mt-4 w-fit" href={link}>
-          {linkText}
-        </Button>
-      )}
-    </Container>
+    <Wrapper>
+      <Container className="flex flex-col gap-4">
+        <Heading
+          className="items-center"
+          label={label}
+          heading={heading}
+          description={description}
+          link={link}
+          linkText={linkText}
+        />
+        {/* Accordion section */}
+        <div className="mx-auto mt-10 flex w-[800px] flex-col gap-4">
+          {items &&
+            items.length > 0 &&
+            items.map((item, index) => (
+              <AccordionItem
+                key={index}
+                index={index}
+                content={item.content}
+                title={item.title}
+                open={index === active}
+                onClick={() => setActive(index === active ? null : index)}
+              />
+            ))}
+        </div>
+      </Container>
+    </Wrapper>
   );
 };
 export default Accordion;
