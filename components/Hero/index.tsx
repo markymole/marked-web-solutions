@@ -30,7 +30,13 @@ export const Hero = ({ title, description }: HeroProps) => {
   return (
     <Wrapper className="overflow-hidden lg:pt-36">
       <Container className="flex flex-col items-center gap-6">
-        <div className="flex max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="flex max-w-4xl"
+        >
           <H as="h1" className="text-center text-7xl font-semibold text-white">
             Building remarkable websites for your{" "}
             <motion.span className="text-gradient">
@@ -38,14 +44,27 @@ export const Hero = ({ title, description }: HeroProps) => {
             </motion.span>
             <span className="text-gradient">.</span>
           </H>
-        </div>
-        <Paragraph className="max-w-3xl text-center text-lg text-gray-300">
-          We specialize in crafting visually stunning and highly functional
-          websites that elevate your brand. Experience the difference with our
-          expert web solutions.
-        </Paragraph>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Paragraph className="max-w-3xl text-center text-lg text-gray-300">
+            We specialize in crafting visually stunning and highly functional
+            websites that elevate your brand. Experience the difference with our
+            expert web solutions.
+          </Paragraph>
+        </motion.div>
 
-        <div className="mt-2 flex flex-col items-center gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-2 flex flex-col items-center gap-8"
+        >
           <Button hierarchy={"primary"} size="base">
             See our work{" "}
             <svg
@@ -61,7 +80,7 @@ export const Hero = ({ title, description }: HeroProps) => {
               />
             </svg>
           </Button>
-        </div>
+        </motion.div>
       </Container>
       <Grid />
       <div className="absolute -top-40 right-0 z-10 h-[480px] w-[700px] rounded-full bg-gradient-radial from-amber-500/40 via-amber-500/20 to-transparent opacity-20 blur-2xl"></div>

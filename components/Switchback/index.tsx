@@ -47,6 +47,7 @@ const Switchback = ({
           )}
         />
       </Container>
+      <Grid />
     </Wrapper>
   );
 };

@@ -5,8 +5,11 @@ import Wrapper from "@/molecules/Wrapper";
 import React, { useState } from "react";
 import Heading from "../Heading";
 import AccordionItem from "./AccordionItem";
+import { twMerge } from "tailwind-merge";
+import Grid from "../Grid";
 
 interface AccordionProps {
+  layout?: "column" | "default";
   label?: string;
   heading: string;
   description: string; // can use richtext
@@ -21,6 +24,7 @@ interface AccordionItemProps {
 }
 
 const Accordion = ({
+  layout = "default",
   label,
   heading,
   description,
@@ -32,9 +36,20 @@ const Accordion = ({
 
   return (
     <Wrapper>
-      <Container className="flex flex-col gap-4">
+      <Container
+        className={twMerge(
+          "relative z-10",
+          layout === "default"
+            ? "flex flex-col gap-4"
+            : "grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-10",
+        )}
+      >
         <Heading
-          className="items-center"
+          className={twMerge(
+            layout === "default"
+              ? "items-center"
+              : "h-fit max-w-lg items-start lg:sticky lg:top-24",
+          )}
           label={label}
           heading={heading}
           description={description}
@@ -42,7 +57,12 @@ const Accordion = ({
           linkText={linkText}
         />
         {/* Accordion section */}
-        <div className="mx-auto mt-10 flex w-[800px] flex-col gap-4">
+        <div
+          className={twMerge(
+            "mx-auto flex w-full max-w-[800px] flex-col gap-4",
+            layout === "default" && "mt-10",
+          )}
+        >
           {items &&
             items.length > 0 &&
             items.map((item, index) => (
@@ -57,6 +77,7 @@ const Accordion = ({
             ))}
         </div>
       </Container>
+      <Grid />
     </Wrapper>
   );
 };

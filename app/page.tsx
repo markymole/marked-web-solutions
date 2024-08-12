@@ -19,7 +19,7 @@ export default function Page() {
 
       <Switcher slides={switcherContent} />
       <Switchback
-        type={"default"}
+        type="switch"
         label="About Us"
         heading="Excellence is in Our DNA"
         description="At Marked, we pride ourselves on delivering top-notch web solutions that embody precision, creativity, and innovation. Our commitment to excellence drives us to exceed client expectations, ensuring every project we undertake is a masterpiece."
@@ -28,7 +28,7 @@ export default function Page() {
         linkText="Learn more"
       />
       <Switchback
-        type="switch"
+        type="default"
         label="Innovation"
         heading="Innovation at the Core"
         description="At Marked, we are not just about following trends; we set them. Our team constantly explores new technologies and creative approaches to provide innovative solutions that make your brand stand out. From cutting-edge designs to seamless functionality, we push the boundaries of what's possible."
@@ -51,6 +51,12 @@ export default function Page() {
         pricingCards={PricingData}
       />
       <Accordion
+        heading="Frequently asked questions"
+        description="Everything you need to know about the service and billing"
+        items={faqItems}
+      />
+      <Accordion
+        layout="column"
         heading="Frequently asked questions"
         description="Everything you need to know about the service and billing"
         items={faqItems}

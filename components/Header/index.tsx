@@ -28,8 +28,8 @@ const Header = () => {
   return (
     <header
       className={twMerge(
-        "animate fixed top-0 z-50 w-full border-b border-b-white/20 px-4 lg:px-24",
-        isTop ? "py-0 backdrop-blur-sm" : "py-2",
+        "animate fixed top-0 z-50 w-full border-b border-b-white/10 px-4 lg:px-24",
+        isTop ? "py-1 backdrop-blur-sm" : "py-3",
       )}
     >
       <div className="max-width flex items-center justify-between">
